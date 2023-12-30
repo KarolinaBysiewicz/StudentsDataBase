@@ -1,0 +1,21 @@
+AddStudent () {
+	malloc ()   //funkcja przydzielająca pamięć
+
+	NewStudent1 () {  //funkcja dodająca nowego studenta z wszystkimy danymi do tablicy
+		CheckNr () {}  //funkcja sprawdzająca czy podany numer indeksu się nie powtarza
+		ModifyData () {}  //funkcja do modyfikowania danych studenta (odniesienie do funkcji Michała)
+	}
+
+	NewStudent 2 () {  //funkcja dodająca nowego studenta bez niektórych danych
+		AddData () {  //funkcja dodająca wybrane, dodatkowe dane poza imieniem i nazwiskiem
+			CheckNr () {}
+			ModifyData () {}
+		} 
+	}
+
+	ModifyData () {}
+
+	SaveData () {}  //funckja zapisująca studenta do bazy danych  (funkcja Michała)	
+	
+	free ()  //funkcja do zwalniania pamięci
+}
