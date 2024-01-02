@@ -1,1 +1,4 @@
-
+DelStudent() - usuwa pojedynczego studenta na podstawie indeksu; Jeżeli student nie istnieje - przejdź do funkcji dodawania
+DelMultStudents() - usuwa kilku studentów na podstawie podanych kryteriów
+FindStudents() - szuka studentów (pojedynczego lub więcej) na podstawie podanych kryteriów i zwraca ich dane
+ifErr() - w przypadku błędu poproś o ponowne podanie danych lub zakończenie wykonywania funkcji
