@@ -1,0 +1,9 @@
+SearchByIndex() - Funkcja przeszukuje studentów jeśli chodzi o numer indeksu i wyświetla dane studenta o danym indeksie
+
+SearchBySurname() - Funkcja przeszukuje studentów i wyświetla tych którzy mają nazwisko takie jak podane, a jeśli ci nie istnieją to takie które są do siebie podobne [używa funkcji SimilarityCheck()]
+
+SimilarityCheck() - Funkcja porównuje dwa słowa i zwraca czy ich podobieństwo jest większe niż 50%
+
+AddCategory() - Funkcja pozwala dodać nową kolumnę, gdzie można określić nazwę kategorii oraz typ danych jakie się w niej znajdują
+
+ModifyData() - Funkcja pozwala wybrać kolumnę w jakiej chcesz edytować dane oraz modyfikuje je, o ile użyjesz poprawnego typu, bo inaczej wyświetli błąd i zapyta o powtórzenie próby lub jej przerwanie
