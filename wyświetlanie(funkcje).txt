@@ -1,9 +1,27 @@
-PrintAll() - funkcja wyświetla całą listę, wszystkie dane
 
-PrintByName() - funkcja pobiera literę od użytkownika, a następnie wyświetla dane tylko tych osób, któych imię zaczyna się na podaną literę
+void PrintAll() // funkcja wyświetla całą listę, wszystkie dane
+  {
+  }
 
-PrintBySurname() - analogicznie do funkcji PrintByName(), tylko po nazwisku 
+void PrintByName() // funkcja pobiera literę od użytkownika, a następnie wyświetla dane tylko tych osób, któych imię zaczyna się na podaną literę
+  {
+  }
 
-PrintByIndexNr() - funkcja pobiera od użytkownika dwie liczby (jeśli poda ujemną - komunikat "błąd" - prośba o podanie kolejnej), następnie sprawdza, która liczba jest większa i ustala z tych liczb odpowiedni przedział domknięty, następnie wyświetla dane tylko tych osób, których nr indeksu należy do tego przedziału
+void PrintBySurname() // analogicznie do funkcji PrintByName(), tylko po nazwisku 
+  {
+  }
 
-PrintByAvg() - analogicznie do funkcji PrintByIndexNr(), tylko po średniej ocen
+void PrintByIndexNr() // funkcja pobiera od użytkownika dwie liczby (jeśli poda ujemną - komunikat "błąd" - prośba o podanie kolejnej), następnie sprawdza, która liczba jest większa i ustala z tych liczb odpowiedni przedział domknięty, następnie wyświetla dane tylko tych osób, których nr indeksu należy do tego przedziału
+  {
+  }
+
+void PrintByAvg() // analogicznie do funkcji PrintByIndexNr(), tylko po średniej ocen
+  {
+  }
+
+
+
+
+
+
+
