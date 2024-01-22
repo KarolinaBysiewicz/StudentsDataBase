@@ -54,8 +54,9 @@ float AddAverage (char average[10]) {
     }
 }
 
-void AddStudent (char answer[3]) {                   //funkcja do wybierania czy znamy wszystkie dane
+void AddStudent () {                   //funkcja do wybierania czy znamy wszystkie dane
 
+    char answer[3];
     printf("Czy znasz wszystkie dane? (tak/nie) \n");
 
     scanf("%s", answer);
@@ -67,7 +68,7 @@ void AddStudent (char answer[3]) {                   //funkcja do wybierania czy
     }
     else {
         printf("Wprowadziles zla odpowiedz. Sprobuj jeszcze raz.\n");
-        AddStudent(answer);     //zapetlanie funkcji w przypadku blednej odpowiedzi;
+        AddStudent();     //zapetlanie funkcji w przypadku blednej odpowiedzi;
     }
 
 }
@@ -202,4 +203,5 @@ void NewStudent2 () {  //funkcja do dodawania studenta, gdy nie znamy wszystkich
     printf("Czy chcesz dodac kolejnego studenta? (tak)/nie) \n");
     AnotherStudent(answer);
 }
+
 
