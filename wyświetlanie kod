@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 
 // OPERACJE NA PLIKACH
 // WYRAŻENIA WARUNKOWE 
@@ -20,7 +20,7 @@ void PrintAll(int a, Student students[a]) // funkcja wyświetla całą listę, w
   {
     for(int i = 0; i < a; i++)
       {
-        printf("%s, %s, %d, %f\n", 
+        printf("%s, %s, %d, %.2f\n", 
           students[i].name, students[i].surname, 
           students[i].IndexNr, students[i].avg);
       }
@@ -38,7 +38,7 @@ void PrintByName(int a, Student students[a]) // funkcja pobiera literę od użyt
       {
         if (students[i].name[0] == letter)
         {
-          printf("%s, %s, %d, %f\n", 
+          printf("%s, %s, %d, %.2f\n", 
           students[i].name, students[i].surname, 
           students[i].IndexNr, students[i].avg);
         }
@@ -59,7 +59,7 @@ void PrintBySurname(int a, Student students[a]) // analogicznie do funkcji Print
        {
          if (students[i].surname[0] == letter)
          {
-           printf("%s, %s, %d, %f\n", 
+           printf("%s, %s, %d, %.2f\n", 
            students[i].name, students[i].surname, 
            students[i].IndexNr, students[i].avg);
          }
@@ -110,7 +110,7 @@ void PrintByIndexNr(int a, Student students[a]) // funkcja pobiera od użytkowni
     {
       if (students[i].IndexNr >= min && students[i].IndexNr <= max)
       {
-        printf("%s, %s, %d, %f\n", 
+        printf("%s, %s, %d, %.2f\n", 
         students[i].name, students[i].surname, 
         students[i].IndexNr, students[i].avg);
       }
@@ -161,7 +161,7 @@ void PrintByAvg(int a, Student students[a]) // analogicznie do funkcji PrintByIn
     {
       if (students[i].avg >= min && students[i].avg <= max)
       {
-        printf("%s, %s, %d, %f\n", 
+        printf("%s, %s, %d, %.2f\n", 
         students[i].name, students[i].surname, 
         students[i].IndexNr, students[i].avg);
       }
@@ -182,7 +182,10 @@ int main()
   /* moduł dodawania nowych osob do pliku */
   }  
 
-  Student students[100];
+  Student *students = NULL; // inicjalizacja tablicy struktur
+  int capacity = 10;
+
+  students = (Student *)malloc(capacity * sizeof(Student));
 
   int read = 0;
   int records = 0;
@@ -195,6 +198,12 @@ int main()
 
       if (read == 4) 
         records++;
+
+      if (records >= capacity) 
+      {
+      capacity *= 2;  // Podwajamy pojemność
+      students = (Student *)realloc(students, capacity * sizeof(Student));
+      }
 
       if ((read != 4) && !feof(tabela))
       {
@@ -266,6 +275,7 @@ int main()
     }
     while(answer != 'n');
 
+  free(students);
 
   return 0;
 } 
