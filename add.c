@@ -105,7 +105,7 @@ void AnotherStudent(char answer[3]) {         //funkcja do dodawania kolejnego s
     }
 }
 
-void MoreData (char answer[3]){     //funkcja: czy chcemy dodać wiecej danych
+void MoreData (char answer[3]){     //funkcja: czy chcemy dodac wiecej danych
     scanf("%s", answer);
     if (strcmp(answer, "tak")==0) {
         AddMoreData(*answer);
@@ -203,5 +203,4 @@ void NewStudent2 () {  //funkcja do dodawania studenta, gdy nie znamy wszystkich
     printf("Czy chcesz dodac kolejnego studenta? (tak)/nie) \n");
     AnotherStudent(answer);
 }
-
 
