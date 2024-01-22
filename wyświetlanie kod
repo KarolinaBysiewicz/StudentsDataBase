@@ -1,0 +1,271 @@
+#include <stdio.h>
+
+
+// OPERACJE NA PLIKACH
+// WYRAŻENIA WARUNKOWE 
+// PĘTLE FOR/ DO WHILE 
+// OPERATORY
+// WEJŚCIE Z KLAWIATURY 
+
+typedef struct 
+ { 
+   char name[50];
+   char surname[50];
+   int IndexNr;
+   float avg;
+
+ } Student;
+
+void PrintAll(int a, Student students[a]) // funkcja wyświetla całą listę, wszystkie dane
+  {
+    for(int i = 0; i < a; i++)
+      {
+        printf("%s, %s, %d, %f\n", 
+          students[i].name, students[i].surname, 
+          students[i].IndexNr, students[i].avg);
+      }
+
+    printf("\n");
+  }
+
+void PrintByName(int a, Student students[a]) // funkcja pobiera literę od użytkownika, a następnie wyświetla dane tylko tych osób, któych imię zaczyna się na podaną literę
+  {
+    char letter;
+    printf("podaj literę(pamiętając o dużym znaku): ");
+    scanf(" %c", &letter);
+
+    for(int i = 0; i < a; i++)
+      {
+        if (students[i].name[0] == letter)
+        {
+          printf("%s, %s, %d, %f\n", 
+          students[i].name, students[i].surname, 
+          students[i].IndexNr, students[i].avg);
+        }
+
+      }
+      printf("\n");
+
+
+  }
+
+void PrintBySurname(int a, Student students[a]) // analogicznie do funkcji PrintByName(), tylko po nazwisku 
+  {
+     char letter;
+     printf("podaj literę (pamiętając o dużym znaku): ");
+     scanf(" %c", &letter);
+
+     for(int i = 0; i < a; i++)
+       {
+         if (students[i].surname[0] == letter)
+         {
+           printf("%s, %s, %d, %f\n", 
+           students[i].name, students[i].surname, 
+           students[i].IndexNr, students[i].avg);
+         }
+
+       }
+       printf("\n");
+   
+  }
+
+void PrintByIndexNr(int a, Student students[a]) // funkcja pobiera od użytkownika dwie liczby (jeśli poda ujemną - komunikat "błąd" - prośba o podanie kolejnej), następnie sprawdza, która liczba jest większa i ustala z tych liczb odpowiedni przedział domknięty, następnie wyświetla dane tylko tych osób, których nr indeksu należy do tego przedziału
+  {
+    float number1, number2;
+    
+    printf("podaj pierwszą liczbę: ");
+    scanf("%f", &number1);
+    
+    while (number1 < 0 )
+      {
+      printf("błąd");
+      printf("podaj jeszcze raz: ");
+      scanf("%f", &number1);
+      }
+
+    printf("podaj drugą liczbę: ");
+    scanf("%f", &number2);
+
+    while (number2 < 0 )
+      {
+      printf("błąd");
+      printf("podaj jeszcze raz: ");
+      scanf("%f", &number2);
+      }
+    
+    float max, min;
+    
+    if (number1 > number2)
+      {
+      max = number1;
+      min = number2;
+      }
+    else 
+      {
+      max = number2;
+      min = number1;
+      }  
+
+    for(int i = 0; i < a; i++)
+    {
+      if (students[i].IndexNr >= min && students[i].IndexNr <= max)
+      {
+        printf("%s, %s, %d, %f\n", 
+        students[i].name, students[i].surname, 
+        students[i].IndexNr, students[i].avg);
+      }
+      
+    }
+    printf("\n");
+  
+  }
+
+void PrintByAvg(int a, Student students[a]) // analogicznie do funkcji PrintByIndexNr(), tylko po średniej ocen
+  {
+    float number1, number2;
+
+    printf("podaj pierwszą liczbę: ");
+    scanf("%f", &number1);
+
+    while (number1 < 0 )
+      {
+      printf("błąd");
+      printf("podaj jeszcze raz: ");
+      scanf("%f", &number1);
+      }
+
+    printf("podaj drugą liczbę: ");
+    scanf("%f", &number2);
+
+    while (number2 < 0 )
+      {
+      printf("błąd");
+      printf("podaj jeszcze raz: ");
+      scanf("%f", &number2);
+      }
+    
+    float max, min;
+
+    if (number1 > number2)
+      {
+      max = number1;
+      min = number2;
+      }
+    else 
+      {
+      max = number2;
+      min = number1;
+      }  
+
+    for(int i = 0; i < a; i++)
+    {
+      if (students[i].avg >= min && students[i].avg <= max)
+      {
+        printf("%s, %s, %d, %f\n", 
+        students[i].name, students[i].surname, 
+        students[i].IndexNr, students[i].avg);
+      }
+
+    }
+    printf("\n");
+
+  }
+
+
+int main() 
+{
+  FILE *tabela;
+  tabela = fopen("dane.csv", "r");
+
+  if (tabela == NULL)
+  { 
+  /* moduł dodawania nowych osob do pliku */
+  }  
+
+  Student students[100];
+
+  int read = 0;
+  int records = 0;
+
+  do 
+    {
+       read = fscanf(tabela, "%49[^,],%49[^,],%d,%f\n",
+         &students[records].name, &students[records].surname,
+         &students[records].IndexNr, &students[records].avg);
+
+      if (read == 4) 
+        records++;
+
+      if ((read != 4) && !feof(tabela))
+      {
+        printf("błąd w pliku\n");
+        return 1;
+      }
+      
+      if (ferror(tabela))
+      {
+        printf("błąd\n");
+        return 1;
+      }  
+    }  
+    while (!feof(tabela));
+
+  fclose(tabela);
+
+  char answer;
+
+  do
+    {
+      
+      printf("czy chcesz coś wyświetlić? wpisz t/n :");
+      scanf(" %c", &answer);
+ 
+      if (answer == 't')
+      {
+
+        char choice;
+        printf("\nwybierz opcję(wpisz jedną cyfrę z podanych):\n 1(wszystkie dane)\n 2(dane po imieniu)\n 3(dane po nazwisku)\n 4(dane po nr indeksu)\n 5(dane po średniej)\n");
+        
+        scanf(" %c", &choice);
+
+        switch(choice)
+          {
+            case '1':
+               PrintAll(records, students);
+               break;
+            case '2':
+               PrintByName(records, students);
+               break;
+            case '3':
+               PrintBySurname(records, students);
+               break;
+            case '4':
+               PrintByIndexNr(records, students);
+               break;
+            case '5':
+               PrintByAvg(records, students);
+               break;
+            default:
+               printf("źle podana odpowiedź\n");
+               break;
+
+          }
+      }
+      
+
+      else if (answer == 'n')
+      {
+        printf("koniec programu\n");
+      }
+
+      else 
+      {
+        printf("źle wpisana odpowiedź\n ");
+      }
+ 
+    }
+    while(answer != 'n');
+
+
+  return 0;
+} 
