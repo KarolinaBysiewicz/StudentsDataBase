@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include<string.h>
 
-void AddStudent (char answer[3]);
+void AddStudent ();
 void AddIndexNr(const struct DataBase * base, int IndexNr);
 void ModifyDataReference(char answer[3]);
 void SaveData (struct DataBase *base, const char *name, const char *surname,int IndexNr, float avg);
