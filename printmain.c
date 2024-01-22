@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "print.h"
 
 int main() 
@@ -11,7 +12,10 @@ int main()
   /* moduł dodawania nowych osob do pliku */
   }  
 
-  Student students[100];
+  Student *students = NULL; // inicjalizacja tablicy struktur
+  int capacity = 10;
+
+  students = (Student *)malloc(capacity * sizeof(Student));
 
   int read = 0;
   int records = 0;
@@ -24,6 +28,12 @@ int main()
 
       if (read == 4) 
         records++;
+
+      if (records >= capacity) 
+      {
+      capacity *= 2;  // Podwajamy pojemność
+      students = (Student *)realloc(students, capacity * sizeof(Student));
+      }
 
       if ((read != 4) && !feof(tabela))
       {
@@ -95,6 +105,7 @@ int main()
     }
     while(answer != 'n');
 
+  free(students);
 
   return 0;
 } 
