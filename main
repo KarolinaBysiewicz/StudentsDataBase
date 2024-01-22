@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include<string.h>
+#include "add.h"
+
+
+
+
+int main() {
+
+    AddStudent();
+    return 0;
+}
+
+
